@@ -88,6 +88,7 @@ class Home extends React.Component {
               thumbnail={ thumbnail }
               price={ price }
               key={ id }
+              id={ id }
             />
           ))
         }

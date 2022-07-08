@@ -1,0 +1,28 @@
+.home-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 30%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 70%;
+}
+
+.search-and-cart {
+  height: fit-content;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+button {
+  margin-bottom: 7px;
+}

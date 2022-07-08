@@ -40,12 +40,20 @@ class Home extends React.Component {
         key={ id }
         type="button"
         data-testid="category"
-        onClick={ () => {} }
+        id={ id }
+        onClick={ this.getProductsListCategory }
       >
         {name}
       </button>
     ));
     return categoryBtns;
+  }
+
+  getProductsListCategory = ({ target }) => {
+    const productId = target.id;
+    console.log(productId);
+    // const productData = await getProductsFromCategoryAndQuery();
+    // const productList = productData.results;
   }
 
   handleStateInput = ({ target }) => {
@@ -55,12 +63,11 @@ class Home extends React.Component {
     });
   };
 
-  getProductsList = async () => {
+  getProductsListSearch = async () => {
     const { searchInput } = this.state;
     const productData = await getProductsFromCategoryAndQuery('categoryId', searchInput);
     const productList = productData.results;
     this.setState({ productList, productSearch: true });
-    console.log(productList);
   }
 
   render() {
@@ -111,7 +118,7 @@ class Home extends React.Component {
             <button
               data-testid="query-button"
               type="button"
-              onClick={ this.getProductsList }
+              onClick={ this.getProductsListSearch }
             >
               Buscar
             </button>

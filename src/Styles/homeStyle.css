@@ -26,3 +26,20 @@ main {
 button {
   margin-bottom: 7px;
 }
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 20px;
+  width: 200px;
+}

@@ -49,11 +49,11 @@ class Home extends React.Component {
     return categoryBtns;
   }
 
-  getProductsListCategory = ({ target }) => {
+  getProductsListCategory = async ({ target }) => {
     const productId = target.id;
-    console.log(productId);
-    // const productData = await getProductsFromCategoryAndQuery();
-    // const productList = productData.results;
+    const productData = await getProductsFromCategoryAndQuery(productId);
+    const productList = productData.results;
+    this.setState({ productList, productSearch: true });
   }
 
   handleStateInput = ({ target }) => {

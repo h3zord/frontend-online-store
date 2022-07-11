@@ -43,3 +43,7 @@ button {
   padding: 20px;
   width: 200px;
 }
+
+.quantity-button {
+  width: 50px;
+}

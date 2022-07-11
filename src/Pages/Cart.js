@@ -61,6 +61,7 @@ class Cart extends React.Component {
           type="button"
           id={ id }
           onClick={ () => this.sumQuantity(id) }
+          className="quantity-button"
         >
           +
         </button>
@@ -69,6 +70,7 @@ class Cart extends React.Component {
           type="button"
           id={ id }
           onClick={ () => this.subQuantity(id) }
+          className="quantity-button"
         >
           -
         </button>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getProductFromProductId } from '../services/api';
 import CartButton from './Components/CartButton';
 import '../Styles/homeStyle.css';
+import { addProductInCart } from '../services/cartList';
 
 class MoreInfo extends Component {
   constructor() {
@@ -26,7 +27,8 @@ class MoreInfo extends Component {
 
   render() {
     const {
-      productInfo: { thumbnail, price, title, warranty, id } } = this.state;
+      productInfo: { thumbnail, price, title, warranty, id },
+    } = this.state;
     const { history } = this.props;
     return (
       <div className="info-container">
@@ -40,6 +42,13 @@ class MoreInfo extends Component {
           <p>{ price }</p>
           <p>{ warranty }</p>
         </div>
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ () => addProductInCart(thumbnail, title, price, id) }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }

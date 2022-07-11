@@ -25,3 +25,21 @@ export const editItemQuantity = (itemId, newQuantity) => {
     }
   });
 };
+
+export const addProductInCart = (image, title, price, productId) => {
+  const productsInCart = getCartitems();
+  const alreadyInCart = productsInCart.find(({ id }) => id === productId);
+  if (!alreadyInCart) {
+    const productToAdd = {
+      image,
+      title,
+      price,
+      id: productId,
+      quantity: 1,
+    };
+    addItem(productToAdd);
+  } else {
+    const newQuantity = alreadyInCart.quantity + 1;
+    editItemQuantity(productId, newQuantity);
+  }
+};

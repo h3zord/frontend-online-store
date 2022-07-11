@@ -96,7 +96,6 @@ class Home extends React.Component {
     );
 
     return (
-
       <div className="home-page">
         <aside className="category-list">
           {

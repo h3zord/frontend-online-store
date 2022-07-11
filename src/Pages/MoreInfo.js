@@ -9,24 +9,24 @@ class MoreInfo extends Component {
     super();
 
     this.state = {
-      productList: {},
+      productInfo: {},
     };
   }
 
   componentDidMount() {
-    this.getProducts();
+    this.getProductInfo();
   }
 
-  getProducts = async () => {
+  getProductInfo = async () => {
     const { match: { params: { id } } } = this.props;
     const productData = await getProductFromProductId(id);
-    this.setState({ productList: productData });
-    // console.log(this.state.productList); LOG DO RETORNO DO OBJETO COM AS INFORMAÇÕES
+    this.setState({ productInfo: productData });
+    // console.log(this.state.productInfo); LOG DO RETORNO DO OBJETO COM AS INFORMAÇÕES
   }
 
   render() {
     const {
-      productList: { thumbnail, price, title, warranty, id } } = this.state;
+      productInfo: { thumbnail, price, title, warranty, id } } = this.state;
     const { history } = this.props;
     return (
       <div className="info-container">
@@ -49,7 +49,7 @@ MoreInfo.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
   }).isRequired,
 };
 

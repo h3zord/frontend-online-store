@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { getProductFromProductId } from '../services/api';
 import { addProductInCart } from '../services/cartList';
+import { addEvaluation, getEvaluations } from '../services/getEvaluation';
 import '../Styles/homeStyle.css';
 import CartButton from './Components/CartButton';
 
@@ -14,11 +15,13 @@ class MoreInfo extends React.Component {
       emailInput: '',
       textAreaInput: '',
       rateButton: 0,
+      evaluationList: [],
     };
   }
 
   componentDidMount() {
     this.getProductInfo();
+    this.getEvaluationList();
   }
 
   handleRateChange = (rate) => {
@@ -30,17 +33,44 @@ class MoreInfo extends React.Component {
     this.setState({ [name]: value });
   }
 
+  saveEvaluationsInput = (event) => {
+    event.preventDefault();
+    const { emailInput, textAreaInput, rateButton } = this.state;
+    const { match: { params: { id } } } = this.props;
+    const evaluationData = {
+      emailInput,
+      textAreaInput,
+      rateButton,
+      evaluationId: id,
+    };
+    addEvaluation(evaluationData);
+    this.setState({
+      emailInput: '',
+      textAreaInput: '',
+      rateButton: 0,
+    });
+    this.getEvaluationList();
+  }
+
+  getEvaluationList = () => {
+    const { match: { params: { id } } } = this.props;
+    const evaluationList = getEvaluations()
+      .filter(({ evaluationId }) => evaluationId === id);
+    this.setState({ evaluationList });
+  }
+
   getProductInfo = async () => {
     const { match: { params: { id } } } = this.props;
     const productData = await getProductFromProductId(id);
     this.setState({ productInfo: productData });
-    // console.log(this.state.productInfo); LOG DO RETORNO DO OBJETO COM AS INFORMAÇÕES
   }
 
   render() {
     const {
-      productInfo: { thumbnail, price, title, warranty, id }, emailInput, textAreaInput,
-    } = this.state;
+      productInfo: { thumbnail, price, title, warranty, id },
+      emailInput,
+      textAreaInput,
+      evaluationList } = this.state;
     const { history } = this.props;
     const rateButtons = [];
     const maxRate = 5;
@@ -50,6 +80,7 @@ class MoreInfo extends React.Component {
           onClick={ () => this.handleRateChange(i) }
           data-testid={ `${i}-rating` }
           type="button"
+          key={ i }
         >
           {i}
         </button>,
@@ -97,10 +128,22 @@ class MoreInfo extends React.Component {
           <button
             type="submit"
             data-testid="submit-review-btn"
+            onClick={ this.saveEvaluationsInput }
           >
             Avaliar
           </button>
         </form>
+        <div>
+          {
+            evaluationList.map((element, index) => (
+              <div key={ index }>
+                <p>{ element.emailInput }</p>
+                <p>{ element.textAreaInput }</p>
+                <p>{`Nota: ${element.rateButton}`}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }

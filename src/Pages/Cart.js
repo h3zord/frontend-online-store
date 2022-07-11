@@ -43,8 +43,9 @@ class Cart extends React.Component {
   }
 
   showCartProducts = (cartList) => {
-    const productsInCart = cartList.map(({ title, price, quantity, id }) => (
+    const productsInCart = cartList.map(({ image, title, price, quantity, id }) => (
       <div key={ id }>
+        <img src={ image } alt="imagem ilustrativa do produto" />
         <h3 data-testid="shopping-cart-product-name">{ title }</h3>
         <p>
           R$

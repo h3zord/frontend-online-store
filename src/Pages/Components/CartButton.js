@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CartButton extends React.Component {
-  redirectCart = () => {
+  redirectToCart = () => {
     const { history } = this.props;
     history.push('/cart');
   }
@@ -13,7 +13,7 @@ class CartButton extends React.Component {
         data-testid="shopping-cart-button"
         type="button"
         id=""
-        onClick={ this.redirectCart }
+        onClick={ this.redirectToCart }
       >
         Carrinho de Compras
       </button>

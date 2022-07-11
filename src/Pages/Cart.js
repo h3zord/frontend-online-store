@@ -25,16 +25,16 @@ class Cart extends React.Component {
   }
 
   sumQuantity = (productID) => {
-    const { cartList } = this.state;
-    cartList.forEach(({ id }, index) => {
-      if (id === productID) cartList[index].quantity += 1;
+    const cartList = getCartitems();
+    cartList.forEach(({ id, quantity, maxQuantity }, index) => {
+      if (id === productID && quantity < maxQuantity) cartList[index].quantity += 1;
     });
     saveCartItems(cartList);
     this.setState({ cartList });
   }
 
   subQuantity = (productID) => {
-    const { cartList } = this.state;
+    const cartList = getCartitems();
     cartList.forEach(({ id, quantity }, index) => {
       if (id === productID && quantity > 1) cartList[index].quantity -= 1;
     });

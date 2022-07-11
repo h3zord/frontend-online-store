@@ -5,14 +5,14 @@ import { addProductInCart } from '../../services/cartList';
 
 class ProductListCard extends Component {
   render() {
-    const { title, thumbnail, price, id } = this.props;
+    const { productData } = this.props;
     return (
       <div data-testid="product" className="product-card">
-        <p>{ title }</p>
-        <img src={ thumbnail } alt="imagem ilustrativa do produto" />
-        <p>{ price }</p>
+        <p>{ productData.title }</p>
+        <img src={ productData.thumbnail } alt="imagem ilustrativa do produto" />
+        <p>{ `R$ ${productData.price}` }</p>
         <Link
-          to={ `/moreInfo/${id}` }
+          to={ `/moreInfo/${productData.id}` }
           data-testid="product-detail-link"
         >
           Mais Informações
@@ -20,7 +20,7 @@ class ProductListCard extends Component {
         <button
           type="button"
           data-testid="product-add-to-cart"
-          onClick={ () => addProductInCart(thumbnail, title, price, id) }
+          onClick={ () => addProductInCart(productData) }
         >
           Adicionar ao Carrinho
         </button>
@@ -30,10 +30,12 @@ class ProductListCard extends Component {
 }
 
 ProductListCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
+  productData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductListCard;

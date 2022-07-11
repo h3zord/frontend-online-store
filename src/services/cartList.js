@@ -26,20 +26,21 @@ export const editItemQuantity = (itemId, newQuantity) => {
   });
 };
 
-export const addProductInCart = (image, title, price, productId) => {
+export const addProductInCart = (product) => {
   const productsInCart = getCartitems();
-  const alreadyInCart = productsInCart.find(({ id }) => id === productId);
+  const alreadyInCart = productsInCart.find(({ id }) => id === product.id);
   if (!alreadyInCart) {
     const productToAdd = {
-      image,
-      title,
-      price,
-      id: productId,
+      image: product.thumbnail,
+      title: product.title,
+      price: product.price,
+      id: product.id,
       quantity: 1,
+      maxQuantity: product.available_quantity,
     };
     addItem(productToAdd);
-  } else {
+  } else if (alreadyInCart.quantity < alreadyInCart.maxQuantity) {
     const newQuantity = alreadyInCart.quantity + 1;
-    editItemQuantity(productId, newQuantity);
+    editItemQuantity(product.id, newQuantity);
   }
 };

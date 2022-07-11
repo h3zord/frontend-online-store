@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCartitems } from '../services/cartList';
+import { getCartitems, saveCartItems } from '../services/cartList';
 
 class Cart extends React.Component {
   constructor() {
@@ -24,6 +24,24 @@ class Cart extends React.Component {
     }
   }
 
+  sumQuantity = (productID) => {
+    const { cartList } = this.state;
+    cartList.forEach(({ id }, index) => {
+      if (id === productID) cartList[index].quantity += 1;
+    });
+    saveCartItems(cartList);
+    this.setState({ cartList });
+  }
+
+  subQuantity = (productID) => {
+    const { cartList } = this.state;
+    cartList.forEach(({ id, quantity }, index) => {
+      if (id === productID && quantity > 1) cartList[index].quantity -= 1;
+    });
+    saveCartItems(cartList);
+    this.setState({ cartList });
+  }
+
   showCartProducts = (cartList) => {
     const productsInCart = cartList.map(({ title, price, quantity, id }) => (
       <div key={ id }>
@@ -31,13 +49,31 @@ class Cart extends React.Component {
         <p>
           R$
           {' '}
-          <span>{ price }</span>
+          <span>{ (price * quantity).toFixed(2) }</span>
         </p>
         <p>
           Quantidade:
           {' '}
           <span data-testid="shopping-cart-product-quantity">{ quantity }</span>
         </p>
+        <button
+          data-testid="product-increase-quantity"
+          type="button"
+          id={ id }
+          onClick={ () => this.sumQuantity(id) }
+          className="quantity-button"
+        >
+          +
+        </button>
+        <button
+          data-testid="product-decrease-quantity"
+          type="button"
+          id={ id }
+          onClick={ () => this.subQuantity(id) }
+          className="quantity-button"
+        >
+          -
+        </button>
       </div>
     ));
 

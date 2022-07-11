@@ -4,7 +4,7 @@ if (!JSON.parse(localStorage.getItem(CART_ITEMS_KEY))) {
   localStorage.setItem(CART_ITEMS_KEY, JSON.stringify([]));
 }
 
-const saveCartItems = (cartItems) => localStorage
+export const saveCartItems = (cartItems) => localStorage
   .setItem(CART_ITEMS_KEY, JSON.stringify(cartItems));
 
 export const getCartitems = () => JSON.parse(localStorage.getItem(CART_ITEMS_KEY));

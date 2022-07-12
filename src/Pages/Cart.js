@@ -31,21 +31,25 @@ class Cart extends React.Component {
   }
 
   sumQuantity = (productID) => {
+    const { quantityProductsCart } = this.props;
     const cartList = getCartitems();
     cartList.forEach(({ id, quantity, maxQuantity }, index) => {
       if (id === productID && quantity < maxQuantity) cartList[index].quantity += 1;
     });
     saveCartItems(cartList);
     this.setState({ cartList });
+    quantityProductsCart();
   }
 
   subQuantity = (productID) => {
+    const { quantityProductsCart } = this.props;
     const cartList = getCartitems();
     cartList.forEach(({ id, quantity }, index) => {
       if (id === productID && quantity > 1) cartList[index].quantity -= 1;
     });
     saveCartItems(cartList);
     this.setState({ cartList });
+    quantityProductsCart();
   }
 
   showCartProducts = (cartList) => {
@@ -100,6 +104,7 @@ class Cart extends React.Component {
           data-testid="checkout-products"
           type="button"
           onClick={ this.redirectToCheckout }
+          disabled={ cartEmpty }
         >
           Fechar Pedido
         </button>
@@ -112,6 +117,7 @@ Cart.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  quantityProductsCart: PropTypes.func.isRequired,
 };
 
 export default Cart;

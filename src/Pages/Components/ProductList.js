@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaShippingFast } from 'react-icons/fa';
-import { addProductInCart } from '../../services/cartList';
 
 class ProductListCard extends Component {
   adjustPrice = (price) => {
@@ -10,7 +9,9 @@ class ProductListCard extends Component {
   }
 
   render() {
-    const { productData } = this.props;
+    const { productData,
+      updateCartAndQuantityItems,
+    } = this.props;
     return (
       <div data-testid="product" className="product-card">
         <p>{ productData.title }</p>
@@ -33,7 +34,7 @@ class ProductListCard extends Component {
         <button
           type="button"
           data-testid="product-add-to-cart"
-          onClick={ () => addProductInCart(productData) }
+          onClick={ () => updateCartAndQuantityItems(productData) }
         >
           Adicionar ao Carrinho
         </button>
@@ -52,6 +53,7 @@ ProductListCard.propTypes = {
       free_shipping: PropTypes.bool.isRequired,
     }).isRequired,
   }).isRequired,
+  updateCartAndQuantityItems: PropTypes.func.isRequired,
 };
 
 export default ProductListCard;

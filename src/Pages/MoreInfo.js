@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FaShippingFast } from 'react-icons/fa';
 import { getProductFromProductId } from '../services/api';
-import { addProductInCart } from '../services/cartList';
 import { addEvaluation, getEvaluations } from '../services/getEvaluation';
 import '../Styles/homeStyle.css';
 import CartButton from './Components/CartButton';
@@ -74,12 +73,13 @@ class MoreInfo extends React.Component {
   }
 
   render() {
-    const { productInfo,
+    const {
+      productInfo,
       emailInput,
       textAreaInput,
       evaluationList,
       freeShipping } = this.state;
-    const { history } = this.props;
+    const { history, quantityProducts, updateCartAndQuantityItems } = this.props;
 
     const rateButtons = [];
     const maxRate = 5;
@@ -98,7 +98,7 @@ class MoreInfo extends React.Component {
 
     return (
       <div className="info-container">
-        <CartButton history={ history } />
+        <CartButton history={ history } quantityProducts={ quantityProducts } />
         <div>
           <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
         </div>
@@ -119,7 +119,7 @@ class MoreInfo extends React.Component {
         <button
           type="button"
           data-testid="product-detail-add-to-cart"
-          onClick={ () => addProductInCart(productInfo) }
+          onClick={ () => updateCartAndQuantityItems(productInfo) }
         >
           Adicionar ao Carrinho
         </button>
@@ -179,6 +179,8 @@ MoreInfo.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  quantityProducts: PropTypes.number.isRequired,
+  updateCartAndQuantityItems: PropTypes.func.isRequired,
 };
 
 export default MoreInfo;

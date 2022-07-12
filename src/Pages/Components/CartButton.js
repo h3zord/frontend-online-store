@@ -8,15 +8,19 @@ class CartButton extends React.Component {
   }
 
   render() {
+    const { quantityProducts } = this.props;
     return (
-      <button
-        data-testid="shopping-cart-button"
-        type="button"
-        id=""
-        onClick={ this.redirectToCart }
-      >
-        Carrinho de Compras
-      </button>
+      <div>
+        <button
+          data-testid="shopping-cart-button"
+          type="button"
+          id=""
+          onClick={ this.redirectToCart }
+        >
+          Carrinho de Compras
+          <p data-testid="shopping-cart-size">{ quantityProducts }</p>
+        </button>
+      </div>
     );
   }
 }
@@ -25,6 +29,7 @@ CartButton.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  quantityProducts: PropTypes.number.isRequired,
 };
 
 export default CartButton;

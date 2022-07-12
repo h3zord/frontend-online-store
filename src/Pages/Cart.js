@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getCartitems, saveCartItems } from '../services/cartList';
 
 class Cart extends React.Component {
@@ -12,6 +13,11 @@ class Cart extends React.Component {
 
   componentDidMount() {
     this.getCartList();
+  }
+
+  redirectToCheckout = () => {
+    const { history } = this.props;
+    history.push('/checkout');
   }
 
   getCartList = () => {
@@ -90,9 +96,22 @@ class Cart extends React.Component {
             ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
             : this.showCartProducts(cartList)
         }
+        <button
+          data-testid="checkout-products"
+          type="button"
+          onClick={ this.redirectToCheckout }
+        >
+          Fechar Pedido
+        </button>
       </div>
     );
   }
 }
+
+Cart.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Cart;

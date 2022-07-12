@@ -82,13 +82,10 @@ class Home extends React.Component {
     const listProductCard = (
       <div className="product-container">
         {
-          productList.map(({ title, thumbnail, price, id }) => (
+          productList.map((product) => (
             <ProductListCard
-              title={ title }
-              thumbnail={ thumbnail }
-              price={ price }
-              id={ id }
-              key={ id }
+              productData={ product }
+              key={ product.id }
             />
           ))
         }

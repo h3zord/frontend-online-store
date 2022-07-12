@@ -9,7 +9,6 @@ import CartButton from './Components/CartButton';
 class MoreInfo extends React.Component {
   constructor() {
     super();
-
     this.state = {
       productInfo: {},
       emailInput: '',
@@ -33,7 +32,7 @@ class MoreInfo extends React.Component {
     this.setState({ [name]: value });
   }
 
-  saveEvaluationsInput = (event) => {
+  saveEvaluationInputs = (event) => {
     event.preventDefault();
     const { emailInput, textAreaInput, rateButton } = this.state;
     const { match: { params: { id } } } = this.props;
@@ -65,13 +64,14 @@ class MoreInfo extends React.Component {
     this.setState({ productInfo: productData });
   }
 
+  adjustPrice = (price) => {
+    if (price) return price.toFixed(2);
+  }
+
   render() {
-    const {
-      productInfo: { thumbnail, price, title, warranty, id },
-      emailInput,
-      textAreaInput,
-      evaluationList } = this.state;
+    const { productInfo, emailInput, textAreaInput, evaluationList } = this.state;
     const { history } = this.props;
+
     const rateButtons = [];
     const maxRate = 5;
     for (let i = 1; i <= maxRate; i += 1) {
@@ -86,22 +86,23 @@ class MoreInfo extends React.Component {
         </button>,
       );
     }
+
     return (
       <div className="info-container">
         <CartButton history={ history } />
         <div>
-          <img src={ thumbnail } alt="imagem ilustrativa do produto" />
+          <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
         </div>
         <div>
-          <p data-testid="product-detail-name">{title}</p>
-          <p>{id}</p>
-          <p>{price}</p>
-          <p>{warranty}</p>
+          <p data-testid="product-detail-name">{productInfo.title}</p>
+          <p>{productInfo.id}</p>
+          <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
+          <p>{productInfo.warranty}</p>
         </div>
         <button
           type="button"
           data-testid="product-detail-add-to-cart"
-          onClick={ () => addProductInCart(thumbnail, title, price, id) }
+          onClick={ () => addProductInCart(productInfo) }
         >
           Adicionar ao Carrinho
         </button>
@@ -128,7 +129,7 @@ class MoreInfo extends React.Component {
           <button
             type="submit"
             data-testid="submit-review-btn"
-            onClick={ this.saveEvaluationsInput }
+            onClick={ this.saveEvaluationInputs }
           >
             Avaliar
           </button>

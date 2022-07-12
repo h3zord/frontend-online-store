@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaShippingFast } from 'react-icons/fa';
 
 class ProductListCard extends Component {
   adjustPrice = (price) => {
@@ -16,6 +17,14 @@ class ProductListCard extends Component {
         <p>{ productData.title }</p>
         <img src={ productData.thumbnail } alt="imagem ilustrativa do produto" />
         <p>{ `R$ ${this.adjustPrice(productData.price)}` }</p>
+        {
+          productData.shipping.free_shipping && (
+            <div data-testid="free-shipping">
+              <FaShippingFast />
+              <p>Frete Grátis</p>
+            </div>
+          )
+        }
         <Link
           to={ `/moreInfo/${productData.id}` }
           data-testid="product-detail-link"
@@ -40,6 +49,9 @@ ProductListCard.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool.isRequired,
+    }).isRequired,
   }).isRequired,
   updateCartAndQuantityItems: PropTypes.func.isRequired,
 };

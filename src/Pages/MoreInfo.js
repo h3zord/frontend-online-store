@@ -64,6 +64,10 @@ class MoreInfo extends React.Component {
     this.setState({ productInfo: productData });
   }
 
+  adjustPrice = (price) => {
+    if (price) return price.toFixed(2);
+  }
+
   render() {
     const { productInfo, emailInput, textAreaInput, evaluationList } = this.state;
     const { history } = this.props;
@@ -92,7 +96,7 @@ class MoreInfo extends React.Component {
         <div>
           <p data-testid="product-detail-name">{productInfo.title}</p>
           <p>{productInfo.id}</p>
-          <p>{productInfo.price}</p>
+          <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
           <p>{productInfo.warranty}</p>
         </div>
         <button

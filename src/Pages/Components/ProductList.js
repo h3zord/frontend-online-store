@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 import { addProductInCart } from '../../services/cartList';
 
 class ProductListCard extends Component {
+  adjustPrice = (price) => {
+    if (price) return price.toFixed(2);
+  }
+
   render() {
     const { productData } = this.props;
     return (
       <div data-testid="product" className="product-card">
         <p>{ productData.title }</p>
         <img src={ productData.thumbnail } alt="imagem ilustrativa do produto" />
-        <p>{ `R$ ${productData.price}` }</p>
+        <p>{ `R$ ${this.adjustPrice(productData.price)}` }</p>
         <Link
           to={ `/moreInfo/${productData.id}` }
           data-testid="product-detail-link"

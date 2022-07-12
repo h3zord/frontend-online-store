@@ -70,7 +70,7 @@ class MoreInfo extends React.Component {
 
   render() {
     const { productInfo, emailInput, textAreaInput, evaluationList } = this.state;
-    const { history } = this.props;
+    const { history, quantityProducts } = this.props;
 
     const rateButtons = [];
     const maxRate = 5;
@@ -89,7 +89,7 @@ class MoreInfo extends React.Component {
 
     return (
       <div className="info-container">
-        <CartButton history={ history } />
+        <CartButton history={ history } quantityProducts={ quantityProducts } />
         <div>
           <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
         </div>
@@ -162,6 +162,7 @@ MoreInfo.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  quantityProducts: PropTypes.number.isRequired,
 };
 
 export default MoreInfo;

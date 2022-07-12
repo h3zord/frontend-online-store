@@ -10,18 +10,15 @@ class Checkout extends Component {
 
   calculateTotalPrice = () => {
     const productList = getCartitems();
-    const totalPrice = productList.reduce((acc, curr) => {
+    return productList.reduce((acc, curr) => {
       acc += (curr.price * curr.quantity);
-      console.log(acc);
       return acc;
     }, 0);
-    return totalPrice;
   }
 
   render() {
     const productList = getCartitems();
     const totalPrice = this.calculateTotalPrice();
-    console.log(getCartitems());
     return (
       <div>
         {
@@ -58,7 +55,7 @@ class Checkout extends Component {
           />
           <input
             data-testid="checkout-phone"
-            type="text"
+            type="tel"
             placeholder="Telefone"
           />
           <input

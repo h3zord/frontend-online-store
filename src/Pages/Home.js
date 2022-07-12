@@ -76,8 +76,13 @@ class Home extends React.Component {
       searchInput,
       productList,
       isLoading,
-      productCategories } = this.state;
-    const { history } = this.props;
+      productCategories,
+      // quantityProducts
+    } = this.state;
+    const { history,
+      updateCartAndQuantityItems,
+      quantityProducts,
+    } = this.props;
 
     const listProductCard = (
       <div className="product-container">
@@ -85,6 +90,7 @@ class Home extends React.Component {
           productList.map((product) => (
             <ProductListCard
               productData={ product }
+              updateCartAndQuantityItems={ updateCartAndQuantityItems }
               key={ product.id }
             />
           ))
@@ -120,7 +126,10 @@ class Home extends React.Component {
               Buscar
             </button>
 
-            <CartButton history={ history } />
+            <CartButton
+              history={ history }
+              quantityProducts={ quantityProducts }
+            />
           </div>
           <section className="searched-products">
             {
@@ -143,6 +152,8 @@ Home.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  updateCartAndQuantityItems: PropTypes.func.isRequired,
+  quantityProducts: PropTypes.number.isRequired,
 };
 
 export default Home;

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { FaShippingFast } from 'react-icons/fa';
 import { getProductFromProductId } from '../services/api';
 import { addProductInCart } from '../services/cartList';
 import { addEvaluation, getEvaluations } from '../services/getEvaluation';
@@ -15,12 +16,22 @@ class MoreInfo extends React.Component {
       textAreaInput: '',
       rateButton: 0,
       evaluationList: [],
+      freeShipping: false,
     };
   }
 
   componentDidMount() {
     this.getProductInfo();
     this.getEvaluationList();
+  }
+
+  getProductInfo = async () => {
+    const { match: { params: { id } } } = this.props;
+    const productData = await getProductFromProductId(id);
+    this.setState({
+      productInfo: productData,
+      freeShipping: productData.shipping.free_shipping,
+    });
   }
 
   handleRateChange = (rate) => {
@@ -58,18 +69,16 @@ class MoreInfo extends React.Component {
     this.setState({ evaluationList });
   }
 
-  getProductInfo = async () => {
-    const { match: { params: { id } } } = this.props;
-    const productData = await getProductFromProductId(id);
-    this.setState({ productInfo: productData });
-  }
-
   adjustPrice = (price) => {
     if (price) return price.toFixed(2);
   }
 
   render() {
-    const { productInfo, emailInput, textAreaInput, evaluationList } = this.state;
+    const { productInfo,
+      emailInput,
+      textAreaInput,
+      evaluationList,
+      freeShipping } = this.state;
     const { history } = this.props;
 
     const rateButtons = [];
@@ -97,6 +106,14 @@ class MoreInfo extends React.Component {
           <p data-testid="product-detail-name">{productInfo.title}</p>
           <p>{productInfo.id}</p>
           <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
+          {
+            freeShipping && (
+              <div data-testid="free-shipping">
+                <FaShippingFast />
+                <p>Frete Grátis</p>
+              </div>
+            )
+          }
           <p>{productInfo.warranty}</p>
         </div>
         <button

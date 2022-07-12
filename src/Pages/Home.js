@@ -77,7 +77,6 @@ class Home extends React.Component {
       productList,
       isLoading,
       productCategories,
-      // quantityProducts
     } = this.state;
     const { history,
       updateCartAndQuantityItems,

@@ -59,6 +59,7 @@ class App extends React.Component {
             path="/moreInfo/:id"
             render={ (props) => (<MoreInfo
               { ...props }
+              updateCartAndQuantityItems={ this.updateCartAndQuantityItems }
               quantityProducts={ quantityProducts }
             />) }
           />

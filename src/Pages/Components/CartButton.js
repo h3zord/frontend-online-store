@@ -18,8 +18,8 @@ class CartButton extends React.Component {
           onClick={ this.redirectToCart }
         >
           Carrinho de Compras
+          <p data-testid="shopping-cart-size">{ quantityProducts }</p>
         </button>
-        <p data-testid="shopping-cart-size">{ quantityProducts }</p>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { getProductFromProductId } from '../services/api';
-import { addProductInCart } from '../services/cartList';
 import { addEvaluation, getEvaluations } from '../services/getEvaluation';
 import '../Styles/homeStyle.css';
 import CartButton from './Components/CartButton';
@@ -70,7 +69,7 @@ class MoreInfo extends React.Component {
 
   render() {
     const { productInfo, emailInput, textAreaInput, evaluationList } = this.state;
-    const { history, quantityProducts } = this.props;
+    const { history, quantityProducts, updateCartAndQuantityItems } = this.props;
 
     const rateButtons = [];
     const maxRate = 5;
@@ -102,7 +101,7 @@ class MoreInfo extends React.Component {
         <button
           type="button"
           data-testid="product-detail-add-to-cart"
-          onClick={ () => addProductInCart(productInfo) }
+          onClick={ () => updateCartAndQuantityItems(productInfo) }
         >
           Adicionar ao Carrinho
         </button>
@@ -163,6 +162,7 @@ MoreInfo.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   quantityProducts: PropTypes.number.isRequired,
+  updateCartAndQuantityItems: PropTypes.func.isRequired,
 };
 
 export default MoreInfo;

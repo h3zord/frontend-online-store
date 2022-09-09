@@ -10,7 +10,7 @@ class CartButton extends React.Component {
   render() {
     const { quantityProducts } = this.props;
     return (
-      <div>
+      <div className="cart-button">
         <button
           data-testid="shopping-cart-button"
           type="button"

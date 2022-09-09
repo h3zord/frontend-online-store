@@ -15,7 +15,11 @@ class ProductListCard extends Component {
     return (
       <div data-testid="product" className="product-card">
         <p>{ productData.title }</p>
-        <img src={ productData.thumbnail } alt="imagem ilustrativa do produto" />
+        <img
+          src={ productData.thumbnail }
+          alt="imagem ilustrativa do produto"
+          className="product-image"
+        />
         <p>{ `R$ ${this.adjustPrice(productData.price)}` }</p>
         {
           productData.shipping.free_shipping && (

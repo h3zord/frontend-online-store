@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import MoreInfo from './Pages/MoreInfo';
@@ -37,7 +37,7 @@ class App extends React.Component {
   render() {
     const { quantityProducts } = this.state;
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route
             exact
@@ -66,7 +66,7 @@ class App extends React.Component {
           <Route path="/checkout" component={ Checkout } />
           <Route path="/purchase" component={ Purchase } />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

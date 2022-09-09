@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getCartitems } from '../services/cartList';
+import Header from './Components/Header';
 
 class Checkout extends Component {
   redirectToPurchase = () => {
@@ -20,24 +21,31 @@ class Checkout extends Component {
     const productList = getCartitems();
     const totalPrice = this.calculateTotalPrice();
     return (
-      <div>
-        {
-          productList.map(({ id, image, price, quantity, title }) => (
-            <div key={ id }>
-              <img src={ image } alt="imagem ilustrativa do produto" />
-              <h3>{ title }</h3>
-              <p>{ `R$ ${(price * quantity).toFixed(2)}` }</p>
-              <p>{`Quantidade: ${quantity}`}</p>
-            </div>
-          ))
-        }
+      <div className="checkout-page">
+        <Header />
+        <div className="products-checkout">
+          {
+            productList.map(({ id, image, price, quantity, title }) => (
+              <div key={ id } className="product-checkout">
+                <img
+                  src={ image }
+                  alt="imagem ilustrativa do produto"
+                  className="product-image"
+                />
+                <h3>{ title }</h3>
+                <p>{ `R$ ${(price * quantity).toFixed(2)}` }</p>
+                <p>{`Quantidade: ${quantity}`}</p>
+              </div>
+            ))
+          }
+        </div>
         <br />
         <br />
         <h4>{`Total da Compra: R$ ${totalPrice.toFixed(2)}`}</h4>
         <br />
         <br />
-        <form>
-          <h3>Informações do Comprador</h3>
+        <h3>Informações do Comprador</h3>
+        <form className="form-checkout">
           <input
             data-testid="checkout-fullname"
             type="text"

@@ -5,6 +5,7 @@ import { getProductFromProductId } from '../services/api';
 import { addEvaluation, getEvaluations } from '../services/getEvaluation';
 import '../Styles/homeStyle.css';
 import CartButton from './Components/CartButton';
+import Header from './Components/Header';
 
 class MoreInfo extends React.Component {
   constructor() {
@@ -97,70 +98,73 @@ class MoreInfo extends React.Component {
     }
 
     return (
-      <div className="info-container">
-        <CartButton history={ history } quantityProducts={ quantityProducts } />
-        <div>
-          <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
+      <div className="info-page">
+        <Header />
+        <div className="info-title">
+          <CartButton history={ history } quantityProducts={ quantityProducts } />
         </div>
-        <div>
-          <p data-testid="product-detail-name">{productInfo.title}</p>
-          <p>{productInfo.id}</p>
-          <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
-          {
-            freeShipping && (
-              <div data-testid="free-shipping">
-                <FaShippingFast />
-                <p>Frete Grátis</p>
-              </div>
-            )
-          }
-          <p>{productInfo.warranty}</p>
-        </div>
-        <button
-          type="button"
-          data-testid="product-detail-add-to-cart"
-          onClick={ () => updateCartAndQuantityItems(productInfo) }
-        >
-          Adicionar ao Carrinho
-        </button>
-        <form>
-          <h1>Avaliação</h1>
-          <input
-            onChange={ this.handleChange }
-            type="email"
-            name="emailInput"
-            value={ emailInput }
-            data-testid="product-detail-email"
-            placeholder="Digite seu e-mail"
-          />
-          <div>
-            {rateButtons}
+        <div className="info-container">
+          <div className="info-product-card">
+            <p data-testid="product-detail-name">{productInfo.title}</p>
+            <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
+            <p>{productInfo.id}</p>
+            <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
+            {
+              freeShipping && (
+                <div data-testid="free-shipping">
+                  <FaShippingFast />
+                  <p>Frete Grátis</p>
+                </div>
+              )
+            }
+            <p>{productInfo.warranty}</p>
+            <button
+              type="button"
+              data-testid="product-detail-add-to-cart"
+              onClick={ () => updateCartAndQuantityItems(productInfo) }
+            >
+              Adicionar ao Carrinho
+            </button>
           </div>
-          <textarea
-            onChange={ this.handleChange }
-            data-testid="product-detail-evaluation"
-            name="textAreaInput"
-            value={ textAreaInput }
-            placeholder="Adicione seus comentários sobre o produto (opcional)"
-          />
-          <button
-            type="submit"
-            data-testid="submit-review-btn"
-            onClick={ this.saveEvaluationInputs }
-          >
-            Avaliar
-          </button>
-        </form>
-        <div>
-          {
-            evaluationList.map((element, index) => (
-              <div key={ index }>
-                <p>{ element.emailInput }</p>
-                <p>{ element.textAreaInput }</p>
-                <p>{`Nota: ${element.rateButton}`}</p>
-              </div>
-            ))
-          }
+          <form className="info-form">
+            <h1>Avaliação</h1>
+            <input
+              onChange={ this.handleChange }
+              type="email"
+              name="emailInput"
+              value={ emailInput }
+              data-testid="product-detail-email"
+              placeholder="Digite seu e-mail"
+            />
+            <div>
+              {rateButtons}
+            </div>
+            <textarea
+              onChange={ this.handleChange }
+              data-testid="product-detail-evaluation"
+              name="textAreaInput"
+              value={ textAreaInput }
+              placeholder="Adicione seus comentários sobre o produto (opcional)"
+            />
+            <button
+              type="submit"
+              data-testid="submit-review-btn"
+              onClick={ this.saveEvaluationInputs }
+            >
+              Avaliar
+            </button>
+          </form>
+          <div className="info-comments">
+            {
+              evaluationList.map((element, index) => (
+                <div key={ index } className="comments">
+                  <p>{ element.emailInput }</p>
+                  <p>{ element.textAreaInput }</p>
+                  <p>{`Nota: ${element.rateButton}`}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     );

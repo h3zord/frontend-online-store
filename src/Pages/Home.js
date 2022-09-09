@@ -5,6 +5,7 @@ import { getProductsFromCategoryAndQuery, getCategories } from '../services/api'
 import Loading from './Components/Loading';
 import '../Styles/homeStyle.css';
 import ProductListCard from './Components/ProductList';
+import Header from './Components/Header';
 
 class Home extends React.Component {
   constructor() {
@@ -99,49 +100,54 @@ class Home extends React.Component {
 
     return (
       <div className="home-page">
-        <aside className="category-list">
-          {
-            isLoading ? <Loading /> : this.getCategoryBtns(productCategories)
-          }
-        </aside>
-
-        <main>
-          <div className="search-and-cart">
-            <input
-              data-testid="query-input"
-              type="search"
-              placeholder="Digite aqui o que você procura"
-              name="searchInput"
-              value={ searchInput }
-              onChange={ this.handleStateInput }
-              id="search-input"
-            />
-
-            <button
-              data-testid="query-button"
-              type="button"
-              onClick={ this.getProductsListSearch }
-            >
-              Buscar
-            </button>
-
-            <CartButton
-              history={ history }
-              quantityProducts={ quantityProducts }
-            />
-          </div>
-          <section className="searched-products">
+        <Header />
+        <div className="main-container">
+          <aside className="category-list">
             {
-              !productSearch
-                ? (
-                  <h1 data-testid="home-initial-message">
-                    Digite algum termo de pesquisa ou escolha uma categoria.
-                  </h1>
-                )
-                : listProductCard
+              isLoading ? <Loading /> : this.getCategoryBtns(productCategories)
             }
-          </section>
-        </main>
+          </aside>
+
+          <main>
+            <div className="search-and-cart">
+              <input
+                data-testid="query-input"
+                type="search"
+                placeholder="Digite aqui o que você procura"
+                name="searchInput"
+                value={ searchInput }
+                onChange={ this.handleStateInput }
+                id="search-input"
+                className="search-input"
+              />
+
+              <button
+                data-testid="query-button"
+                type="button"
+                onClick={ this.getProductsListSearch }
+                className="search-button"
+              >
+                Buscar
+              </button>
+
+              <CartButton
+                history={ history }
+                quantityProducts={ quantityProducts }
+              />
+            </div>
+            <section className="searched-products">
+              {
+                !productSearch
+                  ? (
+                    <h1 data-testid="home-initial-message">
+                      Digite algum termo de pesquisa ou escolha uma categoria.
+                    </h1>
+                  )
+                  : listProductCard
+              }
+            </section>
+          </main>
+        </div>
       </div>
     );
   }

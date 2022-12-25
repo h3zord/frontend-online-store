@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getCartitems, saveCartItems } from '../services/cartList';
-import Header from './Components/Header';
+import { calculateTotalPrice, getCartitems, saveCartItems } from '../services/cartList';
+import Header from './components/Header';
+import emptyCart from '../images/emptyCart.svg';
+import styles from '../styles/Cart.module.css';
+import BackButton from './components/BackButton';
+import sum from '../images/sum.svg';
+import sub from '../images/sub.svg';
 
 class Cart extends React.Component {
   constructor() {
@@ -64,9 +69,10 @@ class Cart extends React.Component {
 
   showCartProducts = (cartList) => {
     const productsInCart = cartList.map(({ image, title, price, quantity, id }) => (
-      <div key={ id } className="cart-product">
-        <img src={ image } alt="imagem ilustrativa do produto" className="product-image" />
-        <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+      <div key={ id } className={ styles.cartProduct }>
+        <hr />
+        <img src={ image } alt="produt img" className={ styles.productImage } />
+        <h4 data-testid="shopping-cart-product-name">{ title }</h4>
         <p>
           R$
           {' '}
@@ -77,7 +83,7 @@ class Cart extends React.Component {
           {' '}
           <span data-testid="shopping-cart-product-quantity">{ quantity }</span>
         </p>
-        <div className="cart-buttons">
+        <div className={ styles.cartButtons }>
           <button
             data-testid="product-increase-quantity"
             type="button"
@@ -85,7 +91,7 @@ class Cart extends React.Component {
             onClick={ () => this.sumQuantity(id) }
             className="quantity-button"
           >
-            +
+            <img src={ sum } alt="sum img" />
           </button>
           <button
             data-testid="product-decrease-quantity"
@@ -94,7 +100,7 @@ class Cart extends React.Component {
             onClick={ () => this.subQuantity(id) }
             className="quantity-button"
           >
-            -
+            <img src={ sub } alt="sub img" />
           </button>
           <button
             type="button"
@@ -113,26 +119,39 @@ class Cart extends React.Component {
 
   render() {
     const { cartEmpty, cartList } = this.state;
+    const { history } = this.props;
     return (
-      <div className="cart-page">
+      <div className={ styles.cartPage }>
         <Header />
-        <div className="cart-container">
-          {
-            cartEmpty
-              ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-              : <div className="cart-products">{ this.showCartProducts(cartList) }</div>
-          }
-          <div className="close-order">
-            <button
-              data-testid="checkout-products"
-              type="button"
-              onClick={ this.redirectToCheckout }
-              disabled={ cartEmpty }
-            >
-              Fechar Pedido
-            </button>
-          </div>
-        </div>
+        <BackButton history={ history } />
+        {
+          cartEmpty
+            ? (
+              <div className={ styles.emptyCart }>
+                <img src={ emptyCart } data-testid="empty-msg" alt="emptyCart img" />
+              </div>
+            )
+            : (
+              <div className={ styles.cartContainer }>
+                <div className={ styles.cartProducts }>
+                  <p className={ styles.title }>Carrinho de compras</p>
+                  { this.showCartProducts(cartList) }
+                </div>
+                <div className={ styles.closeOrder }>
+                  <p>Valor total da compra:</p>
+                  <p>{ `R$ ${calculateTotalPrice().toFixed(2)}` }</p>
+                  <button
+                    data-testid="checkout-products"
+                    type="button"
+                    onClick={ this.redirectToCheckout }
+                    disabled={ cartEmpty }
+                  >
+                    Finalizar compra
+                  </button>
+                </div>
+              </div>
+            )
+        }
       </div>
     );
   }

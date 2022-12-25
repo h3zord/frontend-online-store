@@ -3,9 +3,11 @@ import React from 'react';
 import { FaShippingFast } from 'react-icons/fa';
 import { getProductFromProductId } from '../services/api';
 import { addEvaluation, getEvaluations } from '../services/getEvaluation';
-import '../Styles/homeStyle.css';
-import CartButton from './Components/CartButton';
-import Header from './Components/Header';
+import BackButton from './components/BackButton';
+import CartButton from './components/CartButton';
+import Header from './components/Header';
+import styles from '../styles/MoreInfo.module.css';
+import star from '../images/star.svg';
 
 class MoreInfo extends React.Component {
   constructor() {
@@ -13,8 +15,8 @@ class MoreInfo extends React.Component {
     this.state = {
       productInfo: {},
       emailInput: '',
-      textAreaInput: '',
       rateButton: 0,
+      textAreaInput: '',
       evaluationList: [],
       freeShipping: false,
     };
@@ -79,7 +81,8 @@ class MoreInfo extends React.Component {
       emailInput,
       textAreaInput,
       evaluationList,
-      freeShipping } = this.state;
+      freeShipping,
+      rateButton } = this.state;
     const { history, quantityProducts, updateCartAndQuantityItems } = this.props;
 
     const rateButtons = [];
@@ -91,76 +94,82 @@ class MoreInfo extends React.Component {
           data-testid={ `${i}-rating` }
           type="button"
           key={ i }
+          className={ styles.star }
         >
-          {i}
+          <img src={ star } alt="star img" />
         </button>,
       );
     }
 
     return (
-      <div className="info-page">
+      <div className={ styles.infoPage }>
         <Header />
-        <div className="info-title">
+        <div className={ styles.infoTitle }>
+          <BackButton history={ history } />
           <CartButton history={ history } quantityProducts={ quantityProducts } />
         </div>
-        <div className="info-container">
-          <div className="info-product-card">
-            <p data-testid="product-detail-name">{productInfo.title}</p>
-            <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
-            <p>{productInfo.id}</p>
-            <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
-            {
-              freeShipping && (
-                <div data-testid="free-shipping">
-                  <FaShippingFast />
-                  <p>Frete Grátis</p>
-                </div>
-              )
-            }
-            <p>{productInfo.warranty}</p>
-            <button
-              type="button"
-              data-testid="product-detail-add-to-cart"
-              onClick={ () => updateCartAndQuantityItems(productInfo) }
-            >
-              Adicionar ao Carrinho
-            </button>
-          </div>
-          <form className="info-form">
-            <h1>Avaliação</h1>
-            <input
-              onChange={ this.handleChange }
-              type="email"
-              name="emailInput"
-              value={ emailInput }
-              data-testid="product-detail-email"
-              placeholder="Digite seu e-mail"
-            />
-            <div>
-              {rateButtons}
+        <div className={ styles.infoContainer }>
+          <div className={ styles.infoContent }>
+            <div className={ styles.infoProductCard }>
+              <img src={ productInfo.thumbnail } alt="imagem ilustrativa do produto" />
+              <p data-testid="product-detail-name">{productInfo.title}</p>
+              <p>{productInfo.id}</p>
+              <p>{productInfo.warranty}</p>
+              {
+                freeShipping && (
+                  <div data-testid="free-shipping">
+                    <FaShippingFast />
+                    <p>Frete Grátis</p>
+                  </div>
+                )
+              }
+              <p>{`R$ ${this.adjustPrice(productInfo.price)}`}</p>
+              <button
+                type="button"
+                data-testid="product-detail-add-to-cart"
+                onClick={ () => updateCartAndQuantityItems(productInfo) }
+              >
+                Adicionar ao Carrinho
+              </button>
             </div>
-            <textarea
-              onChange={ this.handleChange }
-              data-testid="product-detail-evaluation"
-              name="textAreaInput"
-              value={ textAreaInput }
-              placeholder="Adicione seus comentários sobre o produto (opcional)"
-            />
-            <button
-              type="submit"
-              data-testid="submit-review-btn"
-              onClick={ this.saveEvaluationInputs }
-            >
-              Avaliar
-            </button>
-          </form>
-          <div className="info-comments">
+            <form className={ styles.infoForm }>
+              <h1>Avaliação</h1>
+              <input
+                onChange={ this.handleChange }
+                type="email"
+                name="emailInput"
+                value={ emailInput }
+                data-testid="product-detail-email"
+                placeholder="Digite seu e-mail"
+              />
+              <textarea
+                onChange={ this.handleChange }
+                data-testid="product-detail-evaluation"
+                name="textAreaInput"
+                value={ textAreaInput }
+                placeholder="Adicione seus comentários sobre o produto (opcional)"
+              />
+              <div>
+                {rateButtons}
+              </div>
+              <button
+                type="submit"
+                data-testid="submit-review-btn"
+                className={ styles.rating }
+                onClick={ this.saveEvaluationInputs }
+                disabled={ !(emailInput.length && rateButton) }
+              >
+                Avaliar
+              </button>
+            </form>
+          </div>
+          <div className={ styles.infoComments }>
             {
               evaluationList.map((element, index) => (
-                <div key={ index } className="comments">
+                <div key={ index } className={ styles.comments }>
                   <p>{ element.emailInput }</p>
-                  <p>{ element.textAreaInput }</p>
                   <p>{`Nota: ${element.rateButton}`}</p>
+                  <p className={ styles.textComent }>{ element.textAreaInput }</p>
                 </div>
               ))
             }

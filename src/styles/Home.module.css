@@ -1,0 +1,134 @@
+.mainContainer {
+  background-color: #ececec;
+  display: flex;
+  width: 100vw;
+}
+
+main {
+  background-color: #ececec;
+  height: 100%;
+  width: 100vw;
+}
+
+.categoryList {
+  background-color: white;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px;
+  width: 30vw;
+}
+
+.categoryList p {
+  color: black;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.categoryList hr {
+  background-color: #b0b3bb;
+  margin-bottom: 20px;
+}
+
+.categoryList button {
+  background-color: white;
+  border: none;
+  color: #444955;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px;
+}
+
+.searchAndCart {
+  background-color: #ececec;
+  display: flex;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.searchInput {
+  border: 1px solid white;
+  cursor: text;
+  font-family: Epilogue , sans-serif;
+  margin-left: 20px;
+  padding: 10px;
+  width: 50%;
+}
+
+.searchInput::placeholder {
+  color: #b0b3bb;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 100;
+  padding-left: 20px;
+}
+
+.searchButton {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+}
+
+.cartButton {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.cartButton button {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.cartButton p {
+  border-radius: 100%;
+  color: #31c28d;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+}
+
+.cart {
+  width: 60px;
+}
+
+.searchedProducts {
+  height: 100%;
+  padding-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.searchedProducts span {
+  align-items: center;
+  color: #94979d;
+  display: flex;
+  flex-direction: column;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  height: 80vh;
+  justify-content: center;
+}
+
+.searchedProducts span img {
+  padding: 30px;
+  width: 40%;
+}
+
+.productContainer {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+}

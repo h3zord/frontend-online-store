@@ -1,11 +1,15 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import PropTypes from 'prop-types';
-import CartButton from './Components/CartButton';
+import CartButton from './components/CartButton';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
-import Loading from './Components/Loading';
-import '../Styles/homeStyle.css';
-import ProductListCard from './Components/ProductList';
-import Header from './Components/Header';
+import Loading from './components/Loading';
+import styles from '../styles/Home.module.css';
+import ProductListCard from './components/ProductList';
+import Header from './components/Header';
+import magnifier from '../images/magnifier.svg';
+import text from '../images/text.svg';
+import text2 from '../images/text2.svg';
 
 class Home extends React.Component {
   constructor() {
@@ -84,32 +88,47 @@ class Home extends React.Component {
       quantityProducts,
     } = this.props;
 
-    const listProductCard = (
-      <div className="product-container">
-        {
-          productList.map((product) => (
-            <ProductListCard
-              productData={ product }
-              updateCartAndQuantityItems={ updateCartAndQuantityItems }
-              key={ product.id }
-            />
-          ))
-        }
-      </div>
-    );
+    const listProductCard = () => {
+      if (!productList.length) {
+        return (
+          <span>
+            <img src={ text2 } alt="text2 img" />
+            Digite outro termo de pesquisa ou escolha uma categoria.
+          </span>
+        );
+      }
+
+      return (
+        <div className={ styles.productContainer }>
+          {
+            productList.map((product) => (
+              <ProductListCard
+                productData={ product }
+                updateCartAndQuantityItems={ updateCartAndQuantityItems }
+                key={ product.id }
+              />
+            ))
+          }
+        </div>
+      );
+    };
 
     return (
       <div className="home-page">
         <Header />
-        <div className="main-container">
-          <aside className="category-list">
+        <div className={ styles.mainContainer }>
+          <aside className={ styles.categoryList }>
+            <p>Categorias</p>
+
+            <hr />
+
             {
               isLoading ? <Loading /> : this.getCategoryBtns(productCategories)
             }
           </aside>
 
           <main>
-            <div className="search-and-cart">
+            <div className={ styles.searchAndCart }>
               <input
                 data-testid="query-input"
                 type="search"
@@ -118,16 +137,16 @@ class Home extends React.Component {
                 value={ searchInput }
                 onChange={ this.handleStateInput }
                 id="search-input"
-                className="search-input"
+                className={ styles.searchInput }
               />
 
               <button
                 data-testid="query-button"
                 type="button"
                 onClick={ this.getProductsListSearch }
-                className="search-button"
+                className={ styles.searchButton }
               >
-                Buscar
+                <img src={ magnifier } alt="magnifier" />
               </button>
 
               <CartButton
@@ -135,15 +154,16 @@ class Home extends React.Component {
                 quantityProducts={ quantityProducts }
               />
             </div>
-            <section className="searched-products">
+            <section className={ styles.searchedProducts }>
               {
                 !productSearch
                   ? (
-                    <h1 data-testid="home-initial-message">
+                    <span data-testid="home-initial-message">
+                      <img src={ text } alt="text img" />
                       Digite algum termo de pesquisa ou escolha uma categoria.
-                    </h1>
+                    </span>
                   )
-                  : listProductCard
+                  : listProductCard()
               }
             </section>
           </main>

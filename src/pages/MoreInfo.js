@@ -164,6 +164,7 @@ class MoreInfo extends React.Component {
             </form>
           </div>
           <div className={ styles.infoComments }>
+            <p className={ styles.commentTitle }>Comentários</p>
             {
               evaluationList.map((element, index) => (
                 <div key={ index } className={ styles.comments }>

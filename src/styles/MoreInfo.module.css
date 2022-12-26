@@ -6,7 +6,6 @@
 .infoTitle {
   align-items: center;
   display: flex;
-  padding: 10px;
   width: 100%;
 }
 
@@ -26,15 +25,15 @@
   display: flex;
   flex-direction: column;
   font-family: Epilogue , sans-serif;
-  height: 60vh;
+  height: 58vh;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   width: 40%;
 }
 
 .infoProductCard img {
-  width: 30%;
+  width: 25%;
 }
 
 .infoProductCard button {
@@ -53,8 +52,9 @@
   display: flex;
   flex-direction: column;
   font-family: Epilogue , sans-serif;
-  height: 60vh;
+  height: 58vh;
   justify-content: space-around;
+  padding: 10px;
   width: 30%;
 }
 
@@ -104,10 +104,17 @@
   width: 40%;
 }
 
+.commentTitle {
+  border-top: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  font-size: 28px;
+  padding: 20px;
+}
+
 .comments {
   border-top: 2px solid #94979d;
   font-family: Epilogue , sans-serif;
-  padding: 15px;
+  padding: 20px;
 }
 
 .comments p {

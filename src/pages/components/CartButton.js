@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaShoppingCart } from 'react-icons/fa';
+import styles from '../../styles/Home.module.css';
 
 class CartButton extends React.Component {
   redirectToCart = () => {
@@ -10,14 +12,14 @@ class CartButton extends React.Component {
   render() {
     const { quantityProducts } = this.props;
     return (
-      <div>
+      <div className={ styles.cartButton }>
         <button
           data-testid="shopping-cart-button"
           type="button"
           id=""
           onClick={ this.redirectToCart }
         >
-          Carrinho de Compras
+          <FaShoppingCart className={ styles.cart } />
           <p data-testid="shopping-cart-size">{ quantityProducts }</p>
         </button>
       </div>

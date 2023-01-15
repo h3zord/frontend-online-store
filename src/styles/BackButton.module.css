@@ -1,0 +1,18 @@
+.backButton {
+  align-items: center;
+  background-color: #ececec;
+  border: none;
+  color: #2fc18c;
+  cursor: pointer;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  height: 10vh;
+  justify-content: center;
+  padding: 20px;
+}
+
+.backButton img {
+  margin-right: 10px;
+  width: 40px;
+}

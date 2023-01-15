@@ -44,3 +44,11 @@ export const addProductInCart = (product) => {
     editItemQuantity(product.id, newQuantity);
   }
 };
+
+export const calculateTotalPrice = () => {
+  const productList = getCartitems();
+  return productList.reduce((acc, curr) => {
+    acc += (curr.price * curr.quantity);
+    return acc;
+  }, 0);
+};

@@ -1,0 +1,212 @@
+body, html {
+  height: 100%;
+}
+
+.checkoutPage {
+  background-color: #ececec;
+  height: 100%;
+  width: 100vw;
+}
+
+.checkoutContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.productsCheckout {
+  align-items: center;
+  background: white;
+  box-shadow: 1px 5px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  padding: 20px;
+  width: 40vw;
+}
+
+.title {
+  font-family: Epilogue , sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px;
+  text-align: center;
+}
+
+.productCheckout {
+  align-items: center;
+  border-top: 2px solid #94979d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  text-align: center;
+  width: 75%;
+}
+
+.productCheckout img {
+  width: 15%;
+}
+
+.productCheckout h4 {
+  color: #444955;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.productCheckout p {
+  color: #444955;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.infoContainer {
+  background-color: white;
+  padding: 20px;
+}
+
+.formCheckout {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  width: 50vw;
+}
+
+.formCheckout input {
+  margin-bottom: 10px;
+}
+
+.fullName {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 48%;
+}
+
+.cpf {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 48%;
+}
+
+.email {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 48%;
+}
+
+.phone {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 48%;
+}
+
+.cep {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 36%;
+}
+
+.adress {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 60%;
+}
+
+.complement {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 60%;
+}
+
+.number {
+  border: 2px solid #94979d;
+  font-family: Epilogue , sans-serif;
+  padding: 8px;
+  width: 36%;
+}
+
+.paymentContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.paymentMethod {
+  display: flex;
+  padding-bottom: 50px;
+}
+
+.paymentDescription {
+  display: flex;
+  font-family: Epilogue , sans-serif;
+}
+
+.boletoPayment {
+  padding: 20px;
+  padding-left: 50px;
+  width: 30%;
+}
+
+.creditPayment {
+  padding: 20px;
+  padding-left: 50px;
+  width: 70%;
+}
+
+.boleto {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 50px;
+  width: 100%;
+}
+
+.boleto label {
+  align-items: center;
+  column-gap: 20px;
+  display: flex;
+}
+
+.creditCard {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.creditCard label {
+  align-items: center;
+  column-gap: 20px;
+  display: flex;
+}
+
+.purchase {
+  align-items: center;
+  border-top: 2px solid #94979d;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+}
+
+.purchase button {
+  background: #31c28d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 18px;
+  padding: 13px;
+  width: 290px;
+}
+
+.boletoMethod {
+  margin-right: 90px;
+}

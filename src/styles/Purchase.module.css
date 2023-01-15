@@ -1,0 +1,18 @@
+.purchaseContainer {
+  background-color: #ececec;
+}
+
+.purchaseText {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  height: 86vh;
+  justify-content: center;
+}
+
+.purchaseContainer p {
+  color: #31c28d;
+  font-family: Epilogue , sans-serif;
+  font-size: 38px;
+  text-align: center;
+}

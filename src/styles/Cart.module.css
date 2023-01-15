@@ -1,0 +1,117 @@
+html, body {
+  background-color: #ececec;
+  height: 100%;
+}
+
+.cartPage {
+  width: 100vw;
+}
+
+.emptyCart {
+  align-items: center;
+  display: flex;
+  height: 78vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.cartContainer {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-around;
+}
+
+.productImage {
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+
+.cartProducts {
+  align-items: center;
+  background-color: white;
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 20px;
+  width: 45vw;
+}
+
+.title {
+  font-family: Epilogue , sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px;
+  text-align: center;
+}
+
+.cartProduct {
+  align-items: center;
+  border-top: 2px solid #94979d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 75%;
+}
+
+.cartProduct h4 {
+  color: #444955;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.cartProduct p {
+  color: #444955;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.cartProduct button {
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  justify-content: center;
+  margin-right: 5px;
+  margin-top: 10px;
+  padding: 8px;
+  width: 50%;
+}
+
+.cartButtons {
+  display: flex;
+  width: 50%;
+}
+
+.closeOrder {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 71vh;
+  justify-content: center;
+  width: 30vw;
+}
+
+.closeOrder p {
+  font-family: Epilogue , sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.closeOrder button {
+  background-color: #31c28d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  margin-top: 50px;
+  padding: 10px;
+  width: 250px;
+}

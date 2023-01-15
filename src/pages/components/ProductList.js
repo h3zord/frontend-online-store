@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaShippingFast } from 'react-icons/fa';
+import styles from '../../styles/ProductList.module.css';
 
 class ProductListCard extends Component {
   adjustPrice = (price) => {
@@ -13,9 +14,13 @@ class ProductListCard extends Component {
       updateCartAndQuantityItems,
     } = this.props;
     return (
-      <div data-testid="product" className="product-card">
+      <div data-testid="product" className={ styles.productCard }>
+        <img
+          src={ productData.thumbnail }
+          alt="imagem ilustrativa do produto"
+          className={ styles.productImage }
+        />
         <p>{ productData.title }</p>
-        <img src={ productData.thumbnail } alt="imagem ilustrativa do produto" />
         <p>{ `R$ ${this.adjustPrice(productData.price)}` }</p>
         {
           productData.shipping.free_shipping && (
@@ -28,6 +33,7 @@ class ProductListCard extends Component {
         <Link
           to={ `/moreInfo/${productData.id}` }
           data-testid="product-detail-link"
+          className={ styles.link }
         >
           Mais Informações
         </Link>

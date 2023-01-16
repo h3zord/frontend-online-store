@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/frontend-online-store/static/css/main.f99a55c6.chunk.css",
+    "main.js": "/frontend-online-store/static/js/main.6d6918d0.chunk.js",
+    "main.js.map": "/frontend-online-store/static/js/main.6d6918d0.chunk.js.map",
+    "runtime-main.js": "/frontend-online-store/static/js/runtime-main.720530ed.js",
+    "runtime-main.js.map": "/frontend-online-store/static/js/runtime-main.720530ed.js.map",
+    "static/js/2.fdee0109.chunk.js": "/frontend-online-store/static/js/2.fdee0109.chunk.js",
+    "static/js/2.fdee0109.chunk.js.map": "/frontend-online-store/static/js/2.fdee0109.chunk.js.map",
+    "index.html": "/frontend-online-store/index.html",
+    "precache-manifest.6f2fc67a6c30291e6670efb74accedb2.js": "/frontend-online-store/precache-manifest.6f2fc67a6c30291e6670efb74accedb2.js",
+    "service-worker.js": "/frontend-online-store/service-worker.js",
+    "static/css/main.f99a55c6.chunk.css.map": "/frontend-online-store/static/css/main.f99a55c6.chunk.css.map",
+    "static/js/2.fdee0109.chunk.js.LICENSE.txt": "/frontend-online-store/static/js/2.fdee0109.chunk.js.LICENSE.txt",
+    "static/media/boleto.svg": "/frontend-online-store/static/media/boleto.ecd17b03.svg",
+    "static/media/elo.svg": "/frontend-online-store/static/media/elo.cbdf2d6f.svg",
+    "static/media/emptyCart.svg": "/frontend-online-store/static/media/emptyCart.bb8b39dc.svg",
+    "static/media/logo.svg": "/frontend-online-store/static/media/logo.2968255e.svg",
+    "static/media/magnifier.svg": "/frontend-online-store/static/media/magnifier.8bae4642.svg",
+    "static/media/mastercard.svg": "/frontend-online-store/static/media/mastercard.34b3f074.svg",
+    "static/media/star.svg": "/frontend-online-store/static/media/star.9324c81c.svg",
+    "static/media/sub.svg": "/frontend-online-store/static/media/sub.9273d597.svg",
+    "static/media/sum.svg": "/frontend-online-store/static/media/sum.12c9569e.svg",
+    "static/media/text.svg": "/frontend-online-store/static/media/text.87c6057f.svg",
+    "static/media/text2.svg": "/frontend-online-store/static/media/text2.3fc54b26.svg",
+    "static/media/visa.svg": "/frontend-online-store/static/media/visa.a42fe1b7.svg",
+    "static/media/voltar.svg": "/frontend-online-store/static/media/voltar.6b1c45c7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.720530ed.js",
+    "static/js/2.fdee0109.chunk.js",
+    "static/css/main.f99a55c6.chunk.css",
+    "static/js/main.6d6918d0.chunk.js"
+  ]
+}

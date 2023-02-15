@@ -1,16 +1,11 @@
 .infoPage {
   background-color: #ececec;
-  width: 100vw;
 }
 
 .infoTitle {
   align-items: center;
   display: flex;
   width: 100%;
-}
-
-.infoContainer {
-  width: 100vw;
 }
 
 .infoContent {

@@ -1,13 +1,16 @@
-.mainContainer {
-  background-color: #ececec;
-  display: flex;
+.home-page {
+  height: 100vh;
   width: 100vw;
+}
+
+.mainContainer {
+  display: flex;
 }
 
 main {
   background-color: #ececec;
   height: 100%;
-  width: 100vw;
+  width: 75vw;
 }
 
 .categoryList {
@@ -16,8 +19,8 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 30px;
-  width: 30vw;
+  padding: 20px;
+  width: 25vw;
 }
 
 .categoryList p {
@@ -42,7 +45,7 @@ main {
   font-family: Epilogue , sans-serif;
   font-size: 16px;
   font-weight: 400;
-  margin: 10px;
+  margin: 4px;
 }
 
 .searchAndCart {
@@ -50,7 +53,6 @@ main {
   display: flex;
   padding-bottom: 20px;
   padding-top: 20px;
-  width: 100%;
 }
 
 .searchInput {
@@ -82,7 +84,7 @@ main {
   align-items: center;
   display: flex;
   margin-left: auto;
-  margin-right: 30px;
+  margin-right: 25px;
 }
 
 .cartButton button {
@@ -90,7 +92,7 @@ main {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  padding: 5px;
+  padding: 4px;
 }
 
 .cartButton p {
@@ -108,7 +110,7 @@ main {
   height: 100%;
   padding-top: 20px;
   text-align: center;
-  width: 100%;
+  width: 75vw;
 }
 
 .searchedProducts span {
@@ -118,7 +120,7 @@ main {
   flex-direction: column;
   font-family: Epilogue , sans-serif;
   font-size: 20px;
-  height: 80vh;
+  height: 70vh;
   justify-content: center;
 }
 
@@ -130,5 +132,6 @@ main {
 .productContainer {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
+

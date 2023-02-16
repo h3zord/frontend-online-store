@@ -206,6 +206,11 @@ body, html {
   width: 290px;
 }
 
+.purchase button:disabled {
+  cursor: auto;
+  opacity: 0.2;
+}
+
 .boletoMethod {
   margin-right: 90px;
 }

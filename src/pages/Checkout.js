@@ -12,13 +12,26 @@ import mastercard from '../images/mastercard.svg';
 import elo from '../images/elo.svg';
 
 class Checkout extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      payment: '',
+    };
+  }
+
   redirectToPurchase = () => {
     const { history } = this.props;
     history.push('/purchase');
   }
 
+  selectPayment = ({ target }) => {
+    this.setState({ payment: target.value });
+  }
+
   render() {
     const { history } = this.props;
+    const { payment } = this.state;
 
     const productList = getCartitems();
     const totalPrice = calculateTotalPrice().toFixed(2);
@@ -110,25 +123,50 @@ class Checkout extends Component {
               <div className={ styles.paymentMethod }>
                 <form className={ styles.boleto }>
                   <label htmlFor="boleto" className={ styles.boletoMethod }>
-                    <input type="radio" id="boleto" name="payment" value="boleto" />
+                    <input
+                      type="radio"
+                      id="boleto"
+                      name="payment"
+                      value="boleto"
+                      onClick={ (e) => this.selectPayment(e) }
+                    />
                     <img src={ boleto } alt="boleto img" />
                   </label>
                   <label htmlFor="visa">
-                    <input type="radio" id="visa" name="payment" value="visa" />
+                    <input
+                      type="radio"
+                      id="visa"
+                      name="payment"
+                      value="visa"
+                      onClick={ (e) => this.selectPayment(e) }
+                    />
                     <img src={ visa } alt="visa img" />
                   </label>
                   <label htmlFor="master">
-                    <input type="radio" id="master" name="payment" value="master" />
+                    <input
+                      type="radio"
+                      id="master"
+                      name="payment"
+                      value="master"
+                      onClick={ (e) => this.selectPayment(e) }
+                    />
                     <img src={ mastercard } alt="mastercard img" />
                   </label>
                   <label htmlFor="elo">
-                    <input type="radio" id="elo" name="payment" value="elo" />
+                    <input
+                      type="radio"
+                      id="elo"
+                      name="payment"
+                      value="elo"
+                      onClick={ (e) => this.selectPayment(e) }
+                    />
                     <img src={ elo } alt="elo img" />
                   </label>
                 </form>
               </div>
               <div className={ styles.purchase }>
                 <button
+                  disabled={ !payment.length }
                   type="button"
                   onClick={ this.redirectToPurchase }
                 >

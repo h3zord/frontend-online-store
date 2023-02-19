@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend-online-store/static/css/main.b523036c.chunk.css",
+    "main.css": "/frontend-online-store/static/css/main.04f708ba.chunk.css",
     "main.js": "/frontend-online-store/static/js/main.7d96737e.chunk.js",
     "main.js.map": "/frontend-online-store/static/js/main.7d96737e.chunk.js.map",
     "runtime-main.js": "/frontend-online-store/static/js/runtime-main.720530ed.js",
@@ -8,9 +8,9 @@
     "static/js/2.fdee0109.chunk.js": "/frontend-online-store/static/js/2.fdee0109.chunk.js",
     "static/js/2.fdee0109.chunk.js.map": "/frontend-online-store/static/js/2.fdee0109.chunk.js.map",
     "index.html": "/frontend-online-store/index.html",
-    "precache-manifest.d1a834123b558dfa7c9562d38149953a.js": "/frontend-online-store/precache-manifest.d1a834123b558dfa7c9562d38149953a.js",
+    "precache-manifest.b03add3754f75f71833491791df1066b.js": "/frontend-online-store/precache-manifest.b03add3754f75f71833491791df1066b.js",
     "service-worker.js": "/frontend-online-store/service-worker.js",
-    "static/css/main.b523036c.chunk.css.map": "/frontend-online-store/static/css/main.b523036c.chunk.css.map",
+    "static/css/main.04f708ba.chunk.css.map": "/frontend-online-store/static/css/main.04f708ba.chunk.css.map",
     "static/js/2.fdee0109.chunk.js.LICENSE.txt": "/frontend-online-store/static/js/2.fdee0109.chunk.js.LICENSE.txt",
     "static/media/boleto.svg": "/frontend-online-store/static/media/boleto.ecd17b03.svg",
     "static/media/elo.svg": "/frontend-online-store/static/media/elo.cbdf2d6f.svg",
@@ -29,7 +29,7 @@
   "entrypoints": [
     "static/js/runtime-main.720530ed.js",
     "static/js/2.fdee0109.chunk.js",
-    "static/css/main.b523036c.chunk.css",
+    "static/css/main.04f708ba.chunk.css",
     "static/js/main.7d96737e.chunk.js"
   ]
 }

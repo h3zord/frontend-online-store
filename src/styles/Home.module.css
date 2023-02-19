@@ -5,6 +5,7 @@
 
 .mainContainer {
   display: flex;
+  width: 99vw;
 }
 
 main {

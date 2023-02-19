@@ -11,6 +11,10 @@ html, body {
   width: 100vw;
 }
 
+.emptyCart img {
+  width: 20%;
+}
+
 .cartContainer {
   align-items: flex-start;
   display: flex;

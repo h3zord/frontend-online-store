@@ -128,7 +128,11 @@ class Cart extends React.Component {
           cartEmpty
             ? (
               <div className={ styles.emptyCart }>
-                <img src={ emptyCart } data-testid="empty-msg" alt="emptyCart img" />
+                <img
+                  src={ emptyCart }
+                  data-testid="empty-msg"
+                  alt="emptyCart img"
+                />
               </div>
             )
             : (

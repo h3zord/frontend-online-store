@@ -68,26 +68,3 @@ Caso utilize o yarn
 ```
 yarn start
 ```
-
-## Execução dos testes
-
-### 1 - Rode o script:
-Caso utilize o npm
-```
-npm run test:coverage
-```
-Caso utilize o yarn
-```
-yarn test:coverage
-```
-
-<h2 align="center">Cobertura de testes</h2>
-<br />
-
-<div align="center">
-  <img
-    src="./src/images/recipes-app-tests.png"
-    width="90%"
-  />
-</div>
-<br />

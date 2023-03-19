@@ -41,7 +41,7 @@ Na página de informações, os usuários podem consultar avaliações e coment�
 
 ### 1 - Clone o repositório:
 ```
-git@github.com:h3zord/frontend-online-store.git
+git clone git@github.com:h3zord/frontend-online-store.git
 ```
 
 ### 2 - Entre no repositório:
